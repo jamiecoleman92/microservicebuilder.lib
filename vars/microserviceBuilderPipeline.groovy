@@ -130,7 +130,7 @@ def call(body) {
         if (fileExists('Dockerfile')) {
           stage ('Docker Build') {
             container ('docker') {
-              imageTag = gitCommit
+              imageTag = gitCommit + "git"
               def buildCommand = "docker build --pull=true -t ${image}:${imageTag}"
               if (libertyLicenseJarBaseUrl) {
                 if (readFile('Dockerfile').contains('LICENSE_JAR_URL')) {
