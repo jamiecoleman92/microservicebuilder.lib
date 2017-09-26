@@ -160,9 +160,9 @@ def call(body) {
         // find the likely chartFolder location
         realChartFolder = getChartFolder(userSpecifiedChartFolder, chartFolder)
         def yamlContent = "image:"
-        yamlContent += "%s\n", " tag: \"${imageTag}\""
-        if (imageTag) yamlContent += "\n  tag: "${imageTag}"
-        
+        yamlContent += "\n " tag: \"${imageTag}\""
+        if (imageTag) yamlContent += "\n  tag: ${imageTag}"
+        sh "echo "\n tag: \"${imageTag}\"""
         sh "echo \"${yamlContent}\" > pipeline.yaml"
       } else {
         sh "find ${manifestFolder} -type f | xargs sed -i \'s|\\(image:\\s*\\)\\(.*\\):latest|\\1${registry}\\2:${gitCommit}|g\'"
