@@ -161,7 +161,7 @@ def call(body) {
         realChartFolder = getChartFolder(userSpecifiedChartFolder, chartFolder)
         def yamlContent = "image:"
         yamlContent += "\n " tag: \"${imageTag}\""
-        if (imageTag) yamlContent += "\n  tag: ${imageTag}"
+        if (imageTag) yamlContent += "\n  tag: \"${imageTag}\""
         sh "echo "\n tag: \"${imageTag}\"""
         sh "echo \"${yamlContent}\" > pipeline.yaml"
       } else {
