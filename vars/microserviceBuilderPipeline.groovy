@@ -160,7 +160,7 @@ def call(body) {
         // find the likely chartFolder location
         realChartFolder = getChartFolder(userSpecifiedChartFolder, chartFolder)
         def yamlContent = "image:"
-        yamlContent += "\n " tag: \"${imageTag}\""
+        yamlContent += "\n  tag: \"${imageTag}\""
         if (imageTag) yamlContent += "\n  tag: \"${imageTag}\""
         sh "echo "\n tag: \"${imageTag}\"""
         sh "echo \"${yamlContent}\" > pipeline.yaml"
