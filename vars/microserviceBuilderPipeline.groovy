@@ -161,9 +161,9 @@ def call(body) {
         realChartFolder = getChartFolder(userSpecifiedChartFolder, chartFolder)
         def yamlContent = "image:"
         yamlContent += "\n  repository: ${registry}${image}"
-        if (imageTag) yamlContent += "\n  tag: \"${imageTag}\""
+        if (imageTag) yamlContent += "\n  tag: \\\"${imageTag}\\\""
         sh "echo \"${yamlContent}\" > pipeline.yaml"
-        sh "sed -i -e 's/tag: ${imageTag}/tag: \"${imageTag}\"/g' pipeline.yaml"
+        //sh "sed -i -e 's/tag: ${imageTag}/tag: \"${imageTag}\"/g' pipeline.yaml"
       } else {
         sh "find ${manifestFolder} -type f | xargs sed -i \'s|\\(image:\\s*\\)\\(.*\\):latest|\\1${registry}\\2:${gitCommit}|g\'"
       }
